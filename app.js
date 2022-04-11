@@ -46,12 +46,14 @@ app.use((_req, res) => {
 const dbURI =
   process.env.MONGODB_URI ||
   "mongodb+srv://lutheranders:k83khC5QmMp9twf@cluster0.uebgs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 mongoose
   .connect(dbURI)
   .then(() => {
-    app.listen(PORT, () => console.log(`server running on port: ${PORT}`));
+    app.listen(process.env.PORT || PORT, () =>
+      console.log(`server running on port: ${PORT}`)
+    );
   })
   .catch((error) => {
     console.log(error.message);
