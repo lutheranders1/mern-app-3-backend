@@ -23,14 +23,14 @@ app.get("/", (req, res) => {
 });
 
 // enable cors for all routes
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept, User-Email, Auth-Token, Authorization"
-//   );
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, User-Email, Auth-Token, Authorization"
+  );
+  next();
+});
 
 // serve everything in assets folder as static, so we can get our single html page
 app.use(express.static("public"));
