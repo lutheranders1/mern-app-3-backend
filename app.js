@@ -43,13 +43,10 @@ app.use((_req, res) => {
   res.status(404).json({ message: `Route not found` });
 });
 
-const dbURI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://lutheranders:k83khC5QmMp9twf@cluster0.uebgs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const PORT = 5000;
 
 mongoose
-  .connect(dbURI)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     app.listen(process.env.PORT || PORT, () =>
       console.log(`server running on port: ${PORT}`)
