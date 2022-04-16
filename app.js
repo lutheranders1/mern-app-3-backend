@@ -18,10 +18,6 @@ app.use(cors());
 
 app.use("/api", moviesRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Welcome to API portal.:)");
-});
-
 // enable cors for all routes
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -43,12 +39,12 @@ app.use((_req, res) => {
   res.status(404).json({ message: `Route not found` });
 });
 
-const PORT = 5000;
+const PORT = "5000";
 
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    app.listen(process.env.PORT || PORT, () =>
+    app.listen(process.env.PORT || "5000", () =>
       console.log(`server running on port: ${PORT}`)
     );
   })
